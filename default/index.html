@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
     <script>
         let animals = [
             "Aardvark",
@@ -250,8 +249,175 @@
                 money = money - (unit[i] * num)
             }
         }
-        paperMoney(12300)
+        paperMoney(12300);
 
+
+        let name = "fruit store";
+        let fruits = ["banna", "apple", "mango"];
+        let address = {
+            country: "Korea",
+            city: 'Seoul'
+        };
+
+        let store = { name, fruits, address };
+
+        console.log(store)
+        document.write(`제 가게 이름은 ${name} 입니다. 위치는 ${address}에 있습니다.`);
+        document.write(`<br /><br />`);
+
+
+        function findStore(obj) {
+            let { name, address: { city } } = obj
+            return name === "fruit store" && city === "Seoul"
+        }
+
+        console.log(findStore({ name, fruits, address }))
+
+
+        function calculate(obj) {
+            let { a, b, c } = obj
+            return a + b + c;
+        }
+        calculate({ a: 1, b: 2, c: 3 })
+
+        function getNumber() {
+            let array = [1, 2, 3, 4, 5, 6];
+            let [first, , third, forth] = array;
+            return { first, third, forth }
+        }
+        console.log(getNumber())
+
+
+        function getCalendar(first, ...rest) {
+            return (
+                first === "January" &&
+                rest[0] === "Febuary" &&
+                rest[1] === "March" &&
+                rest[2] === undefined
+            )
+        }
+
+        console.log(getCalendar("January", "Febuary", "March"))
+
+        function getMinimum() {
+            let a = [45, 23, 78];
+            let b = [54, 11, 9];
+            return Math.min(...a, ...b)
+        }
+        console.log(getMinimum())
+
+        function sumNumber() {
+            const sum = (a, b) => a + b;
+            return sum(40, 10)
+        }
+        console.log(sumNumber())
+
+
+        function sumNumber2() {
+            let addNumber = (a) => (b) => (c) => a + b + c;
+            return addNumber(1)(2)(3)
+        }
+        console.log(sumNumber2())
+
+
+        let names = [
+            "Steven Paul Jobs",
+            "Bill Gates",
+            "Mark Elliot Zuckerberg",
+            "Elon Musk",
+            "jeff Bezos",
+            "Warren Edward Buffett",
+            "Larry Page",
+            "Larry Ellison",
+            "Tim Cook",
+            "Lloyd Blankfein"
+        ]
+        document.write(`MAP문제`);
+        document.write(`<br /><br />`);
+        let upper = names.map((item) => item.toUpperCase());
+        document.write(upper)
+        document.write(`<br /><br />`);
+
+        let cutName = names.map((item) => item.split(" ")[0]);
+        document.write(cutName)
+        document.write(`<br /><br />`);
+
+
+        let initial = names.map((item) => {
+            let part = item.split(" ");
+            let plus = "";
+
+            part.forEach((item2) => (plus += item2[0]))
+            // part.split(" ");
+            return plus
+        })
+        document.write(initial)
+
+        document.write(`<br /><br />`);
+        document.write(`FILTER 문제`);
+        document.write(`<br /><br />`);
+        let includeA = names.filter((item) => item.includes('a'))
+        document.write(includeA)
+        document.write(`<br /><br />`);
+
+        let double = names.filter((item) => {
+            let doubleLetter = item.split(" ");
+            console.log(doubleLetter)
+            return doubleLetter.some((letter, index) => letter == doubleLetter[index + 1])
+        })
+
+        document.write(double)
+        document.write(`SOME 문제`);
+        document.write(`<br /><br />`);
+
+        let calc = names.some((item) => item.length >= 20)
+        document.write(calc)
+        document.write(`<br /><br />`);
+
+        let except = names.some((item) => {
+            let part = item.split(" ");
+            part.pop();
+            return part.some((item) => item.toLocaleLowerCase().includes("p"))
+        })
+        document.write(except)
+        document.write(`<br /><br />`);
+
+        document.write(`EVERY 문제`);
+        document.write(`<br /><br />`);
+
+        let allLength = names.every((item) => item.length >= 20);
+        document.write(allLength)
+        document.write(`<br /><br />`);
+
+        let includeAA = names.every((item) => item.toLocaleLowerCase().includes('a'));
+        document.write(includeAA)
+        document.write(`<br /><br />`);
+
+        document.write(`FIND 문제`);
+        document.write(`<br /><br />`);
+
+        let search = names.find((item) => item.length >= 20)
+        document.write(search)
+        document.write(`<br /><br />`);
+
+        let middleSearch = names.find((item) => {
+            let part = item.split(" ");
+            return part.length >= 3
+        })
+
+        document.write(middleSearch)
+        document.write(`<br /><br />`);
+
+        document.write(`FINDINDEX 문제`);
+        document.write(`<br /><br />`);
+
+        let findLength = names.findIndex((item) => item.length > 20)
+        document.write(findLength)
+        document.write(`<br /><br />`);
+
+        let middleNameLength = names.findIndex((item) => item.split(" ").length >= 3)
+        document.write(middleNameLength)
+        document.write(`<br /><br />`);
     </script>
 </body>
 
