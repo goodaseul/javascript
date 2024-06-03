@@ -1,0 +1,35 @@
+main {
+    .headline {
+        margin: 1em;
+        text-align: center;
+        svg {
+            width: 430px;
+        }
+    }
+    .menus {
+        margin-top: 1em;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #ebebeb;
+        border-bottom: 4px double black;
+        button {
+            border: none;
+            background: none;
+            margin: 5px;
+            &:hover {
+                background-color: beige;
+            }
+        }
+    }
+    .news {
+        border-bottom: 2px solid black;
+        div {
+            padding: 1em;
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}
