@@ -1,0 +1,94 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Do Hyeon", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+main input {
+  padding: 0 0.5rem;
+}
+
+main button {
+  background: none;
+  border: none;
+  border-bottom: 4px double #aaa;
+  cursor: pointer;
+}
+
+main .inner {
+  width: 600px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+main .inner h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+main .inner .wrap_input {
+  align-self: center;
+}
+
+main .inner .wrap_bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+main .inner .wrap_bottom > * {
+  margin: 0 1rem;
+}
+
+main .inner .wrap_bottom button {
+  color: red;
+  border-color: darkred;
+}
+
+main .inner .wrap_bottom .result {
+  text-align: right;
+}
+
+main .inner .alert {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10vh;
+  font-size: 1rem;
+}
+
+main .inner .alert .red {
+  font-size: inherit;
+  color: red;
+}
+
+main .inner .chance {
+  position: absolute;
+  right: 0;
+  top: 30vh;
+  width: 2rem;
+  height: 2rem;
+  background-color: black;
+  border-radius: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+  main .inner {
+    width: auto;
+    margin: 0 1rem;
+  }
+}
