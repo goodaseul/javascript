@@ -1,0 +1,86 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-family: "Nanum Brush Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  max-width: 100%;
+  padding: 2rem 0;
+}
+
+body header,
+body main {
+  margin: 0 2rem;
+}
+
+body header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+body header .headline {
+  margin-bottom: 2rem;
+}
+
+body header .headline svg {
+  max-width: 100%;
+  width: 30rem;
+}
+
+body header .menus {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-top: 1px solid #eee;
+  border-bottom: 4px double #aaa;
+}
+
+body header .menus button {
+  font-size: 1.7rem;
+  padding: 0 1rem;
+}
+
+body main section #newsBoard .news {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+body main section #newsBoard .news h2 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+body main section #newsBoard .news p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #aaa;
+}
+
+body main section #newsBoard .news p span {
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+body main section #newsBoard .news > div {
+  padding: 1%;
+}
+
+body main section #newsBoard .news > div .wrap_img {
+  width: 29%;
+}
+
+body main section #newsBoard .news > div .wrap_info {
+  width: 69%;
+}
