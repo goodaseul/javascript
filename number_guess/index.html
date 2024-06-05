@@ -4,21 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>Number Guess 02</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>숫자 맞추기 게임</h1>
-    <div id="resultBox">결과가 나온다</div>
-    <div style="display:flex;flex-wrap: wrap;">
-        남은기회 :
-        <p id="playTimeNum">5</p>
-    </div>
-    <input type="number" />
-    <button id="goBtn">Go!</button>
-    <button id="reset">Reset</button>
-    <script src="/main.js"></script>
+    <main>
+        <section>
+            <div class="inner">
+                <h1>숫자 맞추기 게임</h1>
+                <div class="wrap_input">
+                    <input type="number">
+                    <button id="goBtn">Go!</button>
+                </div>
+                <div class="wrap_bottom">
+                    <button id="resetBtn">RESET</button>
+                    |
+                    <p class="result">
+                        결과 : <span class="status"></span>
+                    </p>
+                </div>
+                <div class="chance">
+                </div>
+                <p class="alert">
+                    경고: <span class="red">범위는 1-100사이 입니다.</span>
+                </p>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
 </body>
 
 </html>

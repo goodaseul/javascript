@@ -1,120 +1,146 @@
-// 유저가 값 입력
-// +버튼을 클릭하면, 할일 추가
-// delete버튼 누르면 할일 삭제
-// check 버튼 누르면 할일  끝남 밑줄 감
+// 유저는 할 일을 추가할 수 있다.
+// 각 할 일에 삭제와 체크버튼이 있다.
+// 삭제버튼을 클릭하면 할일이 리스트에서 삭제된다.
+// 체크버튼을 누르면 할일이 끝난것 표시 후 밑줄이간다.
+// 끝난 할일은 되돌리기 버튼을 클릭하면 다시 되돌릴 수 있다.
+// 탭을 이용해 아이템들을 상태별로 나누어서 볼 수 있다.
 
-// 진행 중 끝난 탭을 누르면, 언더바가 이동
-// 끝남탭, 끝난 아이템만, 진행중탭은 진행중인 아이템만
-// 전체탭을 누르면 다시 전체아이템으로 돌아옴
-
-let inputBox = document.querySelector("input");
-let addItemBtn = document.getElementById("addItemBtn");
-
-addItemBtn.addEventListener("click", toDoList);
-
-let tabs = document.querySelectorAll(".task_tabs div");
-let taskList = [];
-let mode = "all";
+let userValue = document.querySelector(".input_area input");
+let todoBtn = document.querySelector(".input_area button");
+let tabs = document.querySelectorAll("#taskTabs ul li");
+let taskLists = [];
+let target = "all";
 let filterList = [];
-for (let i = 1; i < tabs.length; i++) {
-    tabs[i].addEventListener("click", function (e) {
-        filter(e);
-    });
-}
+let list = [];
+userValue.addEventListener("focus", () => (userValue.value = ""));
+userValue.addEventListener("keyup", (event) => {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        toDoList();
+    }
+});
+todoBtn.disabled = true;
+let isEmpty = (event) => {
+    if (event.target.value.length > 0) {
+        todoBtn.disabled = false;
+    } else {
+        todoBtn.disabled = true;
+    }
+    return;
+};
 
-function toDoList() {
-    // let taskContent = inputBox.value;
+tabs.forEach((tabItem, index) => {
+    tabItem.addEventListener("click", (event) => filter(event));
+});
+
+let toDoList = () => {
+    // let todoThings = userValue.value;
+
+    todoBtn.disabled = true;
+
     let task = {
         id: randomIdGenerate(),
-        taskContent: inputBox.value,
+        taskContent: userValue.value,
         isComplete: false,
     };
-    taskList.push(task);
+    taskLists.push(task);
     render();
-}
+};
 
-function render() {
-    let resultHTML = "";
+let render = () => {
+    let resultHTML = ``;
     list = [];
-    if (mode == "all") {
-        list = taskList;
+
+    if (target === "all") {
+        list = taskLists;
+    } else if (target === "ongoing") {
+        list = filterList;
     } else {
         list = filterList;
     }
 
-    for (let i = 0; i < list.length; i++) {
-        if (list[i].isComplete == true) {
-            resultHTML += ` <div class="task">
-            <p class="task_done">${list[i].taskContent}</p>
-            <div>
-                <button onClick="toggleComplete('${list[i].id}')">chk</button>
-                <button onClick="removeTask('${list[i].id}')">Del</button>
-            </div>
-        </div>
-        `;
+    list.forEach((item, index) => {
+        if (item.isComplete) {
+            resultHTML += `<div class="task active">
+                <p>
+                    ${item.taskContent}
+                </p>
+                <div class="wrap_btn">
+                    <button class="check
+                    " onClick="toggleComplete('${item.id}')">🔁</button>
+                    <button class="remove"  onClick="deleteTask('${item.id}')">⛔</button>
+                </div>
+            </div>`;
         } else {
-            resultHTML += ` <div class="task">
-            <p>${list[i].taskContent}</p>
-            <div>
-                <button onClick="toggleComplete('${list[i].id}')">chk</button>
-                <button onClick="removeTask('${list[i].id}')">Del</button>
-            </div>
-        </div>
-        `;
+            resultHTML += `<div class="task">
+                <p>
+                    ${item.taskContent}
+                </p>
+                <div class="wrap_btn">
+                    <button class="check" onClick="toggleComplete('${item.id}')">✅</button>
+                    <button class="remove" onClick="deleteTask('${item.id}')">⛔</button>
+                </div>
+            </div>`;
         }
-    }
+    });
 
     document.getElementById("taskList").innerHTML = resultHTML;
-}
+    userValue.value = "";
+};
 
-function toggleComplete(valueId) {
-    for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].id == valueId) {
-            taskList[i].isComplete = !taskList[i].isComplete;
-            break;
+let toggleComplete = (itemId) => {
+    taskLists.forEach((searchId) => {
+        if (searchId.id == itemId) {
+            searchId.isComplete = !searchId.isComplete;
+            return;
         }
-    }
+    });
     filter();
-}
+};
 
-function removeTask(valueId) {
-    for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].id === valueId) {
-            taskList.splice(i, 1);
+let deleteTask = (itemId) => {
+    taskLists.forEach((searchId, index) => {
+        if (searchId.id == itemId) {
+            taskLists.splice(index, 1);
+            return;
         }
-    }
-
+    });
     filter();
-}
+};
 
-function filter(e) {
-    //
-    if (e) {
-        mode = e.target.id;
+let filter = (event) => {
+    tabs.forEach((item, index) => {
+        item.classList.remove("active");
+    });
+
+    if (event) {
         // 진행중 상태에서 끝남으로 표시하면 바로 사라지는 부분은 event가 없음 그래서 조건추가
+        target = event.target.id;
+        event.target.classList.add("active");
     }
+
     filterList = [];
-    if (mode == "all") {
-        // 전체리스트
-        render();
-    } else if (mode == "ongoing") {
-        // is == false
-        for (let i = 0; i < taskList.length; i++) {
-            if (taskList[i].isComplete == false) {
-                filterList.push(taskList[i]);
+    if (target === "ongoing") {
+        //진행중 아이템 === isComplete = false
+        taskLists.forEach((targeting) => {
+            if (targeting.isComplete === false) {
+                filterList.push(targeting);
             }
-        }
-        render();
-    } else if (mode == "done") {
-        // is == true
-        for (let i = 0; i < taskList.length; i++) {
-            if (taskList[i].isComplete == true) {
-                filterList.push(taskList[i]);
+        });
+    } else {
+        //끝난 아이템 === isComplete = true
+        taskLists.forEach((targeting) => {
+            if (targeting.isComplete === true) {
+                filterList.push(targeting);
             }
-        }
-        render();
+        });
     }
-}
+
+    render();
+};
+
+todoBtn.addEventListener("click", toDoList);
+userValue.addEventListener("input", (event) => isEmpty(event));
 
 function randomIdGenerate() {
     return Math.random().toString(36).substr(2, 16);

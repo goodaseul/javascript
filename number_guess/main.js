@@ -1,78 +1,89 @@
-// 랜덤 번호 지정
-// 유저가 랜덤번호를 맞추면, 맞췄습니다!
-// 랜덤번호가 < 유저번호 > DOWN!
-// 랜덤번호가 > 유저번호 > UP!
-// Reset 버튼을 누르면 게임이 리셋
-// 5번의 기회를 다쓰면 게임이 끝난다 (추측 불가, 버튼 disable)
-// 1~100 범위 밖 숫자를 입력하면 알려준다. 기회를 깎지 않는다.
-// 이미 입력한 숫자를 입력하면, 알려준다, 기회를 깎지 않는다.
+// 랜덤번호 지정
+// 유저가 번호 입력 & go btn
+// 맞추면 , 맞췄습니다!
+// 작으면 DOWN!!
+// 크다면  UP!!
+// reset 버튼을 누르면 reset
+// 5번의 기회를 다쓰면 게임 끝 추측 불가 disabled
+// 유저가 1~100 범위 밖에 숫자시 알려주고, 기회를 깎지않음.
+// 이미 입력한 숫자를 또 입력하면, 알려준다. 기회를 깎지않음.
 
 let randomNum = 0;
-let playTimes = 5;
+const goBtn = document.getElementById("goBtn");
+const userInput = document.querySelector("input");
+const resetBtn = document.getElementById("resetBtn");
+let status = document.querySelector(".status");
+let chance = document.querySelector(".chance");
+let alert = document.querySelector(".alert");
+
+let chanceNum = 5;
 let gameOver = false;
 let history = [];
-function pickRandom() {
-    randomNum = Math.floor(Math.random(randomNum) * 100) + 1;
-    console.log(randomNum);
-}
-pickRandom();
 
-let goBtn = document.getElementById("goBtn");
-let resetBtn = document.getElementById("reset");
-let inputBox = document.querySelector("input");
-let resultBox = document.getElementById("resultBox");
-let playTimeNum = document.getElementById("playTimeNum");
+chance.innerText = chanceNum;
+alert.hidden = true;
 
-goBtn.addEventListener("click", play);
-resetBtn.addEventListener("click", reset);
-inputBox.addEventListener("focus", function () {
-    inputBox.value = "";
+let pickRandomNum = () => {
+    randomNum = Math.floor(Math.random() * 100) + 1;
+    console.log("randomNum", randomNum);
+};
+
+userInput.addEventListener("focus", function () {
+    userInput.value = "";
 });
-function play() {
-    let userValue = inputBox.value;
 
-    if (userValue < 1 || userValue > 100) {
-        resultBox.innerText = "1과 100 사이의 숫자를 입력해 주세요.";
+let play = () => {
+    let userInputValue = userInput.value;
+
+    if (userInputValue > 100 || userInputValue < 1) {
+        alert.hidden = false;
         return;
-    }
-
-    if (history.includes(userValue)) {
-        resultBox.innerText = "이미 나온 숫자입니다.";
-        return;
-    }
-
-    history.push(userValue);
-
-    playTimes--;
-
-    if (userValue < randomNum) {
-        resultBox.innerText = "up";
-    } else if (userValue > randomNum) {
-        resultBox.innerText = "down";
     } else {
-        resultBox.innerText = "맞췄다";
+        alert.hidden = true;
+    }
+
+    if (history.includes(userInputValue)) {
+        status.innerText = "이미 입력한 숫자입니다.";
+        return;
+    }
+
+    chanceNum--;
+    chance.innerText = chanceNum;
+
+    if (userInputValue < randomNum) {
+        status.innerText = "UP!";
+    } else if (userInputValue > randomNum) {
+        status.innerText = "DOWN!";
+    } else {
+        status.innerText = "맞 췄 다";
         gameOver = true;
     }
+    history.push(userInputValue);
 
-    if (playTimes < 1) {
+    if (chanceNum < 1) {
         gameOver = true;
     }
     if (gameOver == true) {
         goBtn.disabled = true;
-        inputBox.disabled = true;
+        userInput.disabled = true;
+        userInputValue = " ";
+        return;
     }
 
-    playTimeNum.innerText = playTimes;
-}
+    userInputValue = "";
+};
 
-function reset() {
-    // input창 깨끗하게 정리
-    // 새로운 번호 생성
-    inputBox.value = "";
-    pickRandom();
-    resultBox.innerText = "결과가 나온다";
-
+let reset = () => {
+    status.innerText = " ";
+    userInput.value = " ";
+    chanceNum = 5;
+    chance.innerText = chanceNum;
+    gameOver = false;
     goBtn.disabled = false;
-    inputBox.disabled = false;
-    playTimeNum.innerText = 5;
-}
+    userInput.disabled = false;
+    pickRandomNum();
+};
+
+goBtn.addEventListener("click", play);
+resetBtn.addEventListener("click", reset);
+pickRandomNum();

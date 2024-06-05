@@ -1,56 +1,153 @@
 * {
   padding: 0;
   margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Diphylleia", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
 }
 
-body {
-  background-image: url("./images/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+section {
+  background: darkolivegreen;
+  color: #fff;
+  width: 100%;
 }
 
-body .container {
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+section input {
+  padding: 0 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #fff;
+}
+
+section input:focus {
+  outline: none;
+}
+
+section button {
+  background: none;
+  border: none;
+  border-bottom: 4px double #fff;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+section button span {
+  display: block;
+  transition: all 0.2s;
+  font-size: 1.5rem;
+}
+
+section button:disabled {
+  cursor: default;
+  color: red;
+}
+
+section button:disabled span {
+  transform: rotate(45deg);
+}
+
+section .inner {
+  max-width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-body .container .task_area {
-  border: 1px solid lightgray;
+section .inner h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-body .container .task_area .task_tabs {
-  border-bottom: 1px solid lightgray;
+section .inner > div {
+  width: 80%;
+}
+
+section .inner .input_area {
   display: flex;
   flex-wrap: wrap;
-  position: relative;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 5rem;
 }
 
-body .container .task_area .task_tabs div {
-  padding: 1em;
+section .inner .input_area input {
+  width: 94%;
+  height: 2.5rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+  color: #fff;
 }
 
-body .container .task_area .task_tabs #under_line {
-  position: absolute;
-  height: 4px;
-  background-color: pink;
-  width: 100px;
-  left: 0;
-  bottom: 0;
-  padding: 0;
+section .inner .input_area input::placeholder {
+  color: #aaa;
 }
 
-body .container .task_area .task_tabs .tab {
+section .inner .input_area input:focus {
+  font-size: 1.2rem;
+  height: 4rem;
+}
+
+section .inner .input_area button {
+  width: 5%;
+  transition: all 0.3s;
+}
+
+section .inner .task_area ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+section .inner .task_area ul li {
   cursor: pointer;
 }
 
-body .container .task_area .task {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 1em;
+section .inner .task_area ul li + li {
+  margin-left: 2rem;
 }
 
-body .container .task_area .task .task_done {
+section .inner .task_area ul li.active {
+  border-bottom: 4px double #fff;
+}
+
+section .inner .task_area #taskList {
+  background: #fff;
+  padding: 1.5rem;
+  color: darkolivegreen;
+}
+
+section .inner .task_area #taskList .task {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section .inner .task_area #taskList .task .wrap_btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 5rem;
+}
+
+section .inner .task_area #taskList .task .wrap_btn button + button {
+  margin-left: 1rem;
+}
+
+section .inner .task_area #taskList .task p {
+  padding: 0.5rem 1rem;
+  width: calc(100% - 5rem);
+  transition: all 0.2s;
+}
+
+section .inner .task_area #taskList .task.active p {
   text-decoration: line-through;
+  background: #eee;
 }
