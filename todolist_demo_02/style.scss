@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "Diphylleia", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+}
+
+section {
+    background: darkolivegreen;
+    color: #fff;
+    width: 100%;
+    input {
+        padding: 0 0.5rem;
+        background: none;
+        border: none;
+        border-bottom: 2px solid #fff;
+        &:focus {
+            outline: none;
+        }
+    }
+    button {
+        background: none;
+        border: none;
+        border-bottom: 4px double #fff;
+        color: inherit;
+        cursor: pointer;
+        transition: all 0.2s;
+        span {
+            display: block;
+            transition: all 0.2s;
+            font-size: 1.5rem;
+        }
+        &:disabled {
+            cursor: default;
+            color: red;
+            span {
+                transform: rotate(45deg);
+            }
+        }
+    }
+    .inner {
+        max-width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        > div {
+            width: 80%;
+        }
+        .input_area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 5rem;
+            input {
+                width: 94%;
+                height: 2.5rem;
+                transition: all 0.3s;
+                font-size: 1rem;
+                color: #fff;
+                &::placeholder {
+                    color: #aaa;
+                }
+                &:focus {
+                    font-size: 1.2rem;
+                    height: 4rem;
+                }
+            }
+            button {
+                width: 5%;
+                transition: all 0.3s;
+            }
+        }
+        .task_area {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 3rem;
+                li {
+                    cursor: pointer;
+                    + li {
+                        margin-left: 2rem;
+                    }
+                    &.active {
+                        border-bottom: 4px double #fff;
+                    }
+                }
+            }
+            #taskList {
+                background: #fff;
+                padding: 1.5rem;
+                color: darkolivegreen;
+                .task {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    $area: 5rem;
+                    .wrap_btn {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: flex-end;
+                        width: $area;
+                        button {
+                            + button {
+                                margin-left: 1rem;
+                            }
+                        }
+                    }
+                    p {
+                        padding: 0.5rem 1rem;
+                        width: calc(100% - #{$area});
+                        transition: all 0.2s;
+                    }
+                    &.active {
+                        p {
+                            text-decoration: line-through;
+                            background: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
