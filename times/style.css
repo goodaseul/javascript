@@ -13,6 +13,10 @@
   cursor: pointer;
 }
 
+* input {
+  padding: 0.5rem 1rem;
+}
+
 body {
   max-width: 100%;
   padding: 2rem 0;
@@ -26,6 +30,45 @@ body main {
 body header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+body header .search_box {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+body header .search_box #inpuboxShow {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  padding-right: 1rem;
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+body header .search_box .wrap_input {
+  position: relative;
+  left: -100%;
+  transition: all 0.2s;
+}
+
+body header .search_box .wrap_input input {
+  border: none;
+  border-bottom: 4px double #aaa;
+}
+
+body header .search_box .wrap_input input:focus {
+  outline: none;
+}
+
+body header .search_box .wrap_input button {
+  font-size: 1.4rem;
+}
+
+body header .search_box .wrap_input.active {
+  left: 0;
 }
 
 body header .headline {
@@ -77,10 +120,6 @@ body main section #newsBoard .news > div {
   padding: 1%;
 }
 
-body main section #newsBoard .news > div .wrap_img {
-  width: 29%;
-}
-
-body main section #newsBoard .news > div .wrap_info {
-  width: 69%;
+body main section #newsBoard .news > div.wrap_img img {
+  max-width: 100%;
 }

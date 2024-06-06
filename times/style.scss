@@ -10,6 +10,9 @@
         border: none;
         cursor: pointer;
     }
+    input {
+        padding: 0.5rem 1rem;
+    }
 }
 body {
     max-width: 100%;
@@ -21,6 +24,38 @@ body {
     header {
         text-align: center;
         margin-bottom: 4rem;
+        .search_box {
+            text-align: left;
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            #inpuboxShow {
+                padding: 0.5rem 1rem;
+                background-color: #fff;
+                padding-right: 1rem;
+                font-size: 1.2rem;
+                position: relative;
+                z-index: 2;
+            }
+            .wrap_input {
+                position: relative;
+                left: -100%;
+                transition: all 0.2s;
+                input {
+                    border: none;
+                    border-bottom: 4px double #aaa;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                button {
+                    font-size: 1.4rem;
+                }
+                &.active {
+                    left: 0;
+                }
+            }
+        }
         .headline {
             margin-bottom: 2rem;
             svg {
@@ -64,11 +99,10 @@ body {
                     }
                     > div {
                         padding: 1%;
-                        .wrap_img {
-                            width: 29%;
-                        }
-                        .wrap_info {
-                            width: 69%;
+                        &.wrap_img {
+                            img {
+                                max-width: 100%;
+                            }
                         }
                     }
                 }
