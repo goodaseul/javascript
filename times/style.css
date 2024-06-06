@@ -6,13 +6,11 @@
   font-weight: 400;
   font-style: normal;
 }
-
 * button {
   background: none;
   border: none;
   cursor: pointer;
 }
-
 * input {
   padding: 0.5rem 1rem;
 }
@@ -21,24 +19,20 @@ body {
   max-width: 100%;
   padding: 2rem 0;
 }
-
 body header,
 body main {
   margin: 0 2rem;
 }
-
 body header {
   text-align: center;
   margin-bottom: 4rem;
 }
-
 body header .search_box {
   text-align: left;
   display: flex;
   align-items: center;
   margin-bottom: 3rem;
 }
-
 body header .search_box #inpuboxShow {
   padding: 0.5rem 1rem;
   background-color: #fff;
@@ -47,39 +41,32 @@ body header .search_box #inpuboxShow {
   position: relative;
   z-index: 2;
 }
-
 body header .search_box .wrap_input {
   position: relative;
   left: -100%;
   transition: all 0.2s;
 }
-
 body header .search_box .wrap_input input {
   border: none;
   border-bottom: 4px double #aaa;
+  font-size: 2rem;
 }
-
 body header .search_box .wrap_input input:focus {
   outline: none;
 }
-
 body header .search_box .wrap_input button {
   font-size: 1.4rem;
 }
-
 body header .search_box .wrap_input.active {
   left: 0;
 }
-
 body header .headline {
   margin-bottom: 2rem;
 }
-
 body header .headline svg {
   max-width: 100%;
   width: 30rem;
 }
-
 body header .menus {
   display: flex;
   flex-wrap: wrap;
@@ -87,39 +74,39 @@ body header .menus {
   border-top: 1px solid #eee;
   border-bottom: 4px double #aaa;
 }
-
 body header .menus button {
   font-size: 1.7rem;
   padding: 0 1rem;
 }
-
 body main section #newsBoard .news {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
 }
-
 body main section #newsBoard .news h2 {
   margin-bottom: 2rem;
   font-size: 3rem;
   font-weight: bold;
 }
-
 body main section #newsBoard .news p {
   font-size: 1.8rem;
   font-weight: 600;
   color: #aaa;
 }
-
 body main section #newsBoard .news p span {
   font-size: 1.2rem;
   text-align: right;
 }
-
 body main section #newsBoard .news > div {
   padding: 1%;
 }
-
 body main section #newsBoard .news > div.wrap_img img {
   max-width: 100%;
+}
+body main section #newsBoard .error {
+  background: darkred;
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  padding: 1rem;
 }

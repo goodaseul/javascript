@@ -44,6 +44,7 @@ body {
                 input {
                     border: none;
                     border-bottom: 4px double #aaa;
+                    font-size: 2rem;
                     &:focus {
                         outline: none;
                     }
@@ -105,6 +106,13 @@ body {
                             }
                         }
                     }
+                }
+                .error {
+                    background: darkred;
+                    color: #fff;
+                    font-size: 2rem;
+                    text-align: center;
+                    padding: 1rem;
                 }
             }
         }
