@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-image: url("./images/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    .container {
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        min-height: 100vh;
+        .task_area {
+            border: 1px solid lightgray;
+            .task_tabs {
+                border-bottom: 1px solid lightgray;
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                div {
+                    padding: 1em;
+                }
+                #under_line {
+                    position: absolute;
+                    height: 4px;
+                    background-color: pink;
+                    width: 100px;
+                    left: 0;
+                    bottom: 0;
+                    padding: 0;
+                }
+                .tab {
+                    cursor: pointer;
+                }
+            }
+            .task {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 1em;
+                .task_done {
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+}

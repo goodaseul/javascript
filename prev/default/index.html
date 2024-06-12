@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 공부 </title>
+</head>
+
+<body>
+    <script>
+        let animals = [
+            "Aardvark",
+            "Albatross",
+            "Alligator",
+            "Alpaca",
+            "Ant",
+            "Ape",
+            "Armadillo",
+            "Donkey",
+            "Baboon",
+            "Badger",
+            "Barracuda",
+            "Bat",
+            "Bear",
+            "Beaver",
+            "Bee",
+            "Bison",
+            "Cat",
+            "Caterpillar",
+            "Cattle",
+            "Chamois",
+            "Cheetah",
+            "Chicken",
+            "Chimpanzee",
+            "Chinchilla",
+            "Chough",
+            "Clam",
+            "Cobra",
+            "Cockroach",
+            "Cod",
+            "Cormorant",
+            "Dugong",
+            "Dunlin",
+            "Eagle",
+            "Echidna",
+            "Eel",
+            "Eland",
+            "Elephant",
+            "Elk",
+            "Emu",
+            "Falcon",
+            "Ferret",
+            "Finch",
+            "Fish",
+            "Flamingo",
+            "Fly",
+            "Fox",
+            "Frog",
+            "Gaur",
+            "Gazelle",
+            "Gerbil",
+            "Giraffe",
+            "Grasshopper",
+            "Heron",
+            "Herring",
+            "Hippopotamus",
+            "Hornet",
+            "Horse",
+            "Kangaroo",
+            "Kingfisher",
+            "Koala",
+            "Kookabura",
+            "Moose",
+            "Narwhal",
+            "Newt",
+            "Nightingale",
+            "Octopus",
+            "Okapi",
+            "Opossum",
+            "Quail",
+            "Quelea",
+            "Quetzal",
+            "Rabbit",
+            "Raccoon",
+            "Rail",
+            "Ram",
+            "Rat",
+            "Raven",
+            "Red deer",
+            "Sandpiper",
+            "Sardine",
+            "Sparrow",
+            "Spider",
+            "Spoonbill",
+            "Squid",
+            "Squirrel",
+            "Starling",
+            "Stingray",
+            "Tiger",
+            "Toad",
+            "Whale",
+            "Wildcat",
+            "Wolf",
+            "Worm",
+            "Wren",
+            "Yak",
+            "Zebra"
+        ]
+
+        document.write(`${animals}  <br /><br />`);
+        animals.pop();
+        document.write(`${animals}  <br /><br />`);
+        animals.push('Dog');
+        document.write(`${animals}  <br /><br />`);
+        animals.push('Mosquito', 'Mouse', 'Mule');
+        document.write(`${animals}  <br /><br />`);
+        animals.includes('Human');
+        document.write(`${animals.includes('Human')}  <br /><br />`);
+        animals.indexOf('Red deer');
+        document.write(`${animals.indexOf('Red deer')}  <br /><br />`);
+        animals[77] = "Deer";
+        document.write(`${animals}  <br /><br />`);
+        animals.splice(animals.indexOf('Spider'), 3);
+        document.write(`${animals}  <br /><br />`);
+        document.write(`${animals.indexOf('Tiger')}  <br /><br />`);
+        let afterTiger = animals.slice(0, 84);
+        document.write(`${afterTiger}  <br /><br />`);
+        let animalsB = animals.slice(animals.indexOf('Baboon'), animals.indexOf('Bison') + 1);
+        document.write(`${animalsB}  <br /><br />`);
+
+
+        let userAnswer = 10
+        if (userAnswer < 0) {
+            console.log('음수입니다.')
+        } else if (userAnswer > 0) {
+            console.log('양수입니다.')
+        } else {
+            console.log('zero')
+        }
+        document.write(`<br /><br />`);
+
+        let reportSum = 32;
+        if (reportSum == 100 && reportSum >= 90) {
+            document.write('A')
+        } else if (reportSum < 90 && reportSum >= 80) {
+            document.write('B')
+        } else if (reportSum < 80 && reportSum >= 70) {
+            document.write('C')
+        } else {
+            document.write('FAIL')
+        }
+        document.write(`<br /><br />`);
+
+        let skills = ["HTML", "CSS", "Javascript", "React"];
+        if (skills.includes("Javascript") && skills.includes("React")) {
+            document.write("합격")
+        } else if (skills.includes("Javascript") || skills.includes("React")) {
+            document.write("예비")
+        } else {
+            document.write('탈락')
+        }
+        document.write(`<br /><br />`);
+
+        for (let i = 1; i < 10; i++) {
+            for (let j = 1; j < 10; j++) {
+                document.write(`${i} * ${j} = ${i * j} <br>`)
+            }
+        }
+        document.write(`<br /><br />`);
+
+        let sum = 0;
+        for (let i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        document.write(sum)
+
+        document.write(`<br /><br />`);
+
+        for (let i = 1; i <= 100; i += 2) {
+            document.write(i + ',')
+        }
+        document.write(`<br /><br />`);
+
+        for (let i = 1; i <= 50; i++) {
+            let stringValue = i.toString();
+            let result = ""
+            for (let j = 0; j < stringValue.length; j++) {
+                if (stringValue[j] === "3" || stringValue[j] === "6" || stringValue[j] === "9") {
+                    result += "짝"
+                }
+            }
+            document.write(result.length > 0 ? result : i)
+        }
+
+        document.write(`<br /><br />`);
+
+        function greet() {
+            return '안녕 내 이름은 제시카야 '
+        }
+        let greetStart = greet();
+        document.write(greetStart)
+
+        document.write(`<br /><br />`);
+
+        function changeName(name) {
+            document.write(`안녕 내 이름은 ${name}야`)
+            return name
+        }
+
+        let returnName = changeName('에밀리')
+
+        document.write(`<br /><br />`);
+
+
+        function meetAt(year, month, day) {
+            if (day) {
+                document.write(`${year}/${month}/${day}`)
+            } else if (month) {
+                document.write(`${year}년 ${month}월`)
+            } else {
+                document.write(`${year}년`)
+            }
+
+        }
+        meetAt(2022);
+        document.write(`<br /><br />`);
+        meetAt(2032, 4);
+        document.write(`<br /><br />`);
+        meetAt(1997, 1, 3);
+
+        document.write(`<br /><br />`);
+
+
+        function findSmallestElement(arr) {
+            return arr.length === 0 ? 0 : Math.min(...arr)
+        }
+        let lowNum = findSmallestElement([100, 200, 38, 56, 22, 25])
+        document.write(lowNum);
+
+        document.write(`<br /><br />`);
+
+        let unit = [50000, 10000, 5000, 1000, 500, 100]
+
+        function paperMoney(money) {
+            for (let i = 0; i < unit.length; i++) {
+                let num = Math.floor(money / unit[i])
+                console.log(unit[i] + "X" + num)
+                money = money - (unit[i] * num)
+            }
+        }
+        paperMoney(12300);
+
+
+        let name = "fruit store";
+        let fruits = ["banna", "apple", "mango"];
+        let address = {
+            country: "Korea",
+            city: 'Seoul'
+        };
+
+        let store = { name, fruits, address };
+
+        console.log(store)
+        document.write(`제 가게 이름은 ${name} 입니다. 위치는 ${address}에 있습니다.`);
+        document.write(`<br /><br />`);
+
+
+        function findStore(obj) {
+            let { name, address: { city } } = obj
+            return name === "fruit store" && city === "Seoul"
+        }
+
+        console.log(findStore({ name, fruits, address }))
+
+
+        function calculate(obj) {
+            let { a, b, c } = obj
+            return a + b + c;
+        }
+        calculate({ a: 1, b: 2, c: 3 })
+
+        function getNumber() {
+            let array = [1, 2, 3, 4, 5, 6];
+            let [first, , third, forth] = array;
+            return { first, third, forth }
+        }
+        console.log(getNumber())
+
+
+        function getCalendar(first, ...rest) {
+            return (
+                first === "January" &&
+                rest[0] === "Febuary" &&
+                rest[1] === "March" &&
+                rest[2] === undefined
+            )
+        }
+
+        console.log(getCalendar("January", "Febuary", "March"))
+
+        function getMinimum() {
+            let a = [45, 23, 78];
+            let b = [54, 11, 9];
+            return Math.min(...a, ...b)
+        }
+        console.log(getMinimum())
+
+        function sumNumber() {
+            const sum = (a, b) => a + b;
+            return sum(40, 10)
+        }
+        console.log(sumNumber())
+
+
+        function sumNumber2() {
+            let addNumber = (a) => (b) => (c) => a + b + c;
+            return addNumber(1)(2)(3)
+        }
+        console.log(sumNumber2())
+
+
+        let names = [
+            "Steven Paul Jobs",
+            "Bill Gates",
+            "Mark Elliot Zuckerberg",
+            "Elon Musk",
+            "jeff Bezos",
+            "Warren Edward Buffett",
+            "Larry Page",
+            "Larry Ellison",
+            "Tim Cook",
+            "Lloyd Blankfein"
+        ]
+        document.write(`MAP문제`);
+        document.write(`<br /><br />`);
+        let upper = names.map((item) => item.toUpperCase());
+        document.write(upper)
+        document.write(`<br /><br />`);
+
+        let cutName = names.map((item) => item.split(" ")[0]);
+        document.write(cutName)
+        document.write(`<br /><br />`);
+
+
+        let initial = names.map((item) => {
+            let part = item.split(" ");
+            let plus = "";
+
+            part.forEach((item2) => (plus += item2[0]))
+            // part.split(" ");
+            return plus
+        })
+        document.write(initial)
+
+        document.write(`<br /><br />`);
+        document.write(`FILTER 문제`);
+        document.write(`<br /><br />`);
+        let includeA = names.filter((item) => item.includes('a'))
+        document.write(includeA)
+        document.write(`<br /><br />`);
+
+        let double = names.filter((item) => {
+            let doubleLetter = item.split(" ");
+            console.log(doubleLetter)
+            return doubleLetter.some((letter, index) => letter == doubleLetter[index + 1])
+        })
+
+        document.write(double)
+        document.write(`SOME 문제`);
+        document.write(`<br /><br />`);
+
+        let calc = names.some((item) => item.length >= 20)
+        document.write(calc)
+        document.write(`<br /><br />`);
+
+        let except = names.some((item) => {
+            let part = item.split(" ");
+            part.pop();
+            return part.some((item) => item.toLocaleLowerCase().includes("p"))
+        })
+        document.write(except)
+        document.write(`<br /><br />`);
+
+        document.write(`EVERY 문제`);
+        document.write(`<br /><br />`);
+
+        let allLength = names.every((item) => item.length >= 20);
+        document.write(allLength)
+        document.write(`<br /><br />`);
+
+        let includeAA = names.every((item) => item.toLocaleLowerCase().includes('a'));
+        document.write(includeAA)
+        document.write(`<br /><br />`);
+
+        document.write(`FIND 문제`);
+        document.write(`<br /><br />`);
+
+        let search = names.find((item) => item.length >= 20)
+        document.write(search)
+        document.write(`<br /><br />`);
+
+        let middleSearch = names.find((item) => {
+            let part = item.split(" ");
+            return part.length >= 3
+        })
+
+        document.write(middleSearch)
+        document.write(`<br /><br />`);
+
+        document.write(`FINDINDEX 문제`);
+        document.write(`<br /><br />`);
+
+        let findLength = names.findIndex((item) => item.length > 20)
+        document.write(findLength)
+        document.write(`<br /><br />`);
+
+        let middleNameLength = names.findIndex((item) => item.split(" ").length >= 3)
+        document.write(middleNameLength)
+        document.write(`<br /><br />`);
+    </script>
+</body>
+
+</html>

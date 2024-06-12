@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("./images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body .container {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  min-height: 100vh;
+}
+
+body .container .task_area {
+  border: 1px solid lightgray;
+}
+
+body .container .task_area .task_tabs {
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+body .container .task_area .task_tabs div {
+  padding: 1em;
+}
+
+body .container .task_area .task_tabs #under_line {
+  position: absolute;
+  height: 4px;
+  background-color: pink;
+  width: 100px;
+  left: 0;
+  bottom: 0;
+  padding: 0;
+}
+
+body .container .task_area .task_tabs .tab {
+  cursor: pointer;
+}
+
+body .container .task_area .task {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+body .container .task_area .task .task_done {
+  text-decoration: line-through;
+}
